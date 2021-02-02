@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { winningBoards } from './data';
 
 @Component({
@@ -12,6 +12,7 @@ export class GameComponent implements OnInit {
     [0, 0, 0],
     [0, 0, 0],
   ];
+  @Input() hardMode: boolean;
   victoryStatus: boolean;
   isDraw: boolean;
   gameActive = true;
@@ -42,21 +43,26 @@ export class GameComponent implements OnInit {
     });
     setTimeout(() => {
       while (!moved && canMove) {
-        this.board.forEach((row, rowInd) => {
-          if (count > 0) {
-            this.board.forEach((col, colInd) => {
-              if (count > 0) {
-                if (this.board[rowInd][colInd] === 0) {
-                  count--;
-                  if (count === 0) {
-                    moved = true;
-                    this.board[rowInd][colInd] = 2;
+        if (!this.hardMode) {
+          // Random & Easy A.I.
+          this.board.forEach((row, rowInd) => {
+            if (count > 0) {
+              this.board.forEach((col, colInd) => {
+                if (count > 0) {
+                  if (this.board[rowInd][colInd] === 0) {
+                    count--;
+                    if (count === 0) {
+                      moved = true;
+                      this.board[rowInd][colInd] = 2;
+                    }
                   }
                 }
-              }
-            });
-          }
-        });
+              });
+            }
+          });
+        } else {
+          // Implement difficult API here
+        }
       }
     }, 1200);
     setTimeout(() => {

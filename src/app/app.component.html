@@ -1,3 +1,4 @@
+<app-options (toggleEventEmitter)="toggleDifficulty($event)"></app-options>
 <div class="container">
-  <app-game></app-game>
+  <app-game [hardMode]="hardMode"></app-game>
 </div>
