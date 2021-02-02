@@ -1,0 +1,22 @@
+<div *ngIf="gameActive">
+  <div *ngFor="let row of board; let rowIndex = index" class="row">
+    <div *ngFor="let col of board[rowIndex]; let colIndex = index" class="col">
+      <app-square
+        [rowValue]="rowIndex"
+        [colValue]="colIndex"
+        [squareValue]="board[rowIndex][colIndex]"
+        [playerTurn]="playerTurn"
+        (clickEventEmitter)="enemyTurn($event)"
+      ></app-square>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!gameActive && !isDraw">
+  <h2>You {{ victoryStatus ? "win!" : "lose." }}</h2>
+  <button (click)="playAgain()">Play Again</button>
+</div>
+<div *ngIf="!gameActive && isDraw">
+  <h2>It's a draw.</h2>
+  <button (click)="playAgain()">Play Again</button>
+</div>

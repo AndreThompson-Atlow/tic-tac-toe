@@ -1,0 +1,36 @@
+.square {
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150px;
+}
+
+.square:hover {
+  background-color: lightblue;
+  border: 1px solid blue;
+  box-sizing: border-box;
+}
+
+.top {
+  border-top: 1px solid black;
+}
+.bottom {
+  border-bottom: 1px solid black;
+}
+.right {
+  border-right: 1px solid black;
+}
+.left {
+  border-left: 1px solid black;
+}
+
+.fa-helmet-battle {
+  color: blue;
+}
+
+.fa-dragon {
+  color: red;
+}
